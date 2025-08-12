@@ -35,8 +35,8 @@ pnpm preview
 ```
 src/
   main.tsx            # app bootstrap
-  App.tsx             # router + providers
-  pages/              # route-level components (Index.tsx, NotFound.tsx)
+  app.tsx             # router + providers
+  pages/              # route-level components (index.tsx, not-found.tsx)
   components/ui/      # shadcn-ui primitives (Button, Card, Dialog, Form, Table, ...)
   hooks/              # common hooks (use-toast, use-mobile)
   lib/utils.ts        # cn utility
@@ -45,8 +45,8 @@ public/               # static assets
 
 ## Routing
 
-- Define routes in `src/App.tsx` using `<Routes>` and `<Route>`.
-- Add page components under `src/pages/*.tsx` and wire them in `App.tsx`.
+- Define routes in `src/app.tsx` using `<Routes>` and `<Route>`.
+- Add page components under `src/pages/*.tsx` and wire them in `app.tsx`.
 - Keep reusable UI in `src/components/` and import into pages.
 
 Example:
