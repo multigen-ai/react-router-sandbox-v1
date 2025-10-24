@@ -6,8 +6,14 @@ import path from "path";
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
-    host: "::",
-    port: 8080,
+    host: "0.0.0.0",
+    port: 3000,
+    strictPort: true,
+    hmr: true, // Disable HMR for E2B preview URLs
+    cors: {
+      origin: '*',
+      credentials: false
+    },
   },
   plugins: [react(), tailwindcss() as any], // eslint-disable-line @typescript-eslint/no-explicit-any
   resolve: {
