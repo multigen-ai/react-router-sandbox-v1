@@ -1,24 +1,22 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
+import { reactRouter } from "@react-router/dev/vite";
 import tailwindcss from "@tailwindcss/vite";
-import path from "path";
+import { defineConfig } from "vite";
+import tsconfigPaths from "vite-tsconfig-paths";
 
-// https://vitejs.dev/config/
 export default defineConfig({
   server: {
     host: "0.0.0.0",
     port: 3000,
     strictPort: true,
-    hmr: true, // Disable HMR for E2B preview URLs
+    hmr: true,
     cors: {
       origin: '*',
       credentials: false
     },
   },
-  plugins: [react(), tailwindcss() as any], // eslint-disable-line @typescript-eslint/no-explicit-any
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-  },
+  plugins: [
+    tailwindcss() as any, // eslint-disable-line @typescript-eslint/no-explicit-any
+    reactRouter(),
+    tsconfigPaths(),
+  ],
 });

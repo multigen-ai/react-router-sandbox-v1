@@ -129,6 +129,9 @@
   --breakpoint-xl: 1280px;
   --breakpoint-2xl: 1400px; /* default is 1536px */
 
+  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SF Mono", monospace;
+
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
   --animate-fade-in-out: fade-in-out 4s ease-in-out;
@@ -461,5 +464,6 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-sans);
   }
 }
