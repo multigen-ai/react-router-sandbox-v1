@@ -1,0 +1,33 @@
+# Dependencies
+node_modules
+
+# Build output
+dist
+dist-ssr
+build
+.wrangler
+.react-router
+
+# Environment
+*.local
+.env
+.env.*
+!.env.example
+.dev.vars
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

@@ -10,8 +10,14 @@ export default defineConfig({
     strictPort: true,
     hmr: true,
     cors: {
-      origin: '*',
-      credentials: false
+      origin: "*",
+      credentials: false,
+    },
+    proxy: {
+      "/api": {
+        target: "http://localhost:8787",
+        changeOrigin: true,
+      },
     },
   },
   plugins: [

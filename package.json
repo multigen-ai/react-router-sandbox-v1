@@ -1,0 +1,15 @@
+{
+  "name": "react-router-template",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter client dev",
+    "dev:server": "pnpm --filter server dev",
+    "dev:all": "pnpm -r --parallel dev",
+    "build": "pnpm --filter client build",
+    "build:server": "pnpm --filter server build",
+    "build:all": "pnpm -r build",
+    "deploy": "pnpm --filter server deploy",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck"
+  }
+}
