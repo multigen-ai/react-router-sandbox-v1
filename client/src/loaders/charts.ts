@@ -1,5 +1,3 @@
-import fs from 'fs';
-
 export interface MonthlyData {
     month: string;
     revenue: number;
@@ -52,9 +50,6 @@ export interface ChartsData {
 export async function chartsLoader(): Promise<ChartsData> {
     // Simulate async data fetching
     await new Promise((resolve) => setTimeout(resolve, 100));
-    // check file system works.
-    const result = fs.readFileSync('/data/charts.json', 'utf8');
-    console.log(result);
 
     // Monthly revenue data (12 months)
     const monthlyData: MonthlyData[] = [
