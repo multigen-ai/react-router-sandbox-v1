@@ -132,6 +132,22 @@ class PassThrough {
     }
   }
 
+  on(event: string, callback: (...args: any[]) => void) {
+    // Stub implementation for compatibility with pipe()
+    return this;
+  }
+
+  destroy(error?: Error) {
+    // Stub implementation for compatibility with error handling
+    if (this.controller) {
+      if (error) {
+        this.controller.error(error);
+      } else {
+        this.controller.close();
+      }
+    }
+  }
+
   getController(controller: ReadableStreamDefaultController) {
     this.controller = controller;
     this.chunks.forEach((chunk) => controller.enqueue(chunk));

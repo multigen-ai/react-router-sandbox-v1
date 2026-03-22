@@ -1,6 +1,4 @@
-import { promises as fs } from "fs";
-import path from "path";
-import type { Route } from "./+types/charts";
+import { useState, useEffect } from "react";
 import {
   Card,
   CardContent,
@@ -18,22 +16,27 @@ import { KPIMetrics } from "@/components/charts/kpi-metrics";
 import type { ChartConfig } from "@/components/ui/chart";
 import type { ChartsData } from "@/loaders/charts";
 
-// Server-side loader - runs on Node.js, can access filesystem
-export async function loader({ request }: Route.LoaderArgs) {
-  try {
-    // Try to read from synced data directory first
-    const dataPath = path.join(process.cwd(), "data", "charts.json");
-    const data = await fs.readFile(dataPath, "utf-8");
-    return JSON.parse(data);
-  } catch {
-    // Fallback to mock data if file doesn't exist
-    const { chartsLoader } = await import("@/loaders/charts");
-    return await chartsLoader();
-  }
-}
+export default function Charts() {
+  const [data, setData] = useState<ChartsData | null>(null);
 
-export default function Charts({ loaderData }: Route.ComponentProps) {
-  const data = loaderData as ChartsData;
+  useEffect(() => {
+    async function loadData() {
+      const { chartsLoader } = await import("@/loaders/charts");
+      const result = await chartsLoader();
+      setData(result);
+    }
+    loadData();
+  }, []);
+
+  if (!data) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-lg">Loading charts...</div>
+        </div>
+      </div>
+    );
+  }
 
   // Chart configurations
   const monthlyConfig: ChartConfig = {
