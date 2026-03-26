@@ -8,8 +8,8 @@
     "build": "pnpm --filter client build",
     "build:server": "pnpm --filter server build",
     "build:all": "pnpm -r build",
+    "check": "pnpm --filter client check",
     "deploy": "pnpm --filter server deploy",
-    "lint": "pnpm -r lint",
     "typecheck": "pnpm -r typecheck"
   }
 }

@@ -1,19 +1,17 @@
-import { reactRouter } from "@react-router/dev/vite";
+import { defineConfig } from "vite-plus";
+import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
-import { defineConfig } from "vite";
-import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
+  resolve: {
+    tsconfigPaths: true,
+  },
   server: {
     host: "0.0.0.0",
     port: 3000,
-    strictPort: true,
     allowedHosts: true,
     hmr: true,
-    cors: {
-      origin: "*",
-      credentials: false,
-    },
+    cors: { origin: "*", credentials: false },
     proxy: {
       "/api": {
         target: "http://localhost:8787",
@@ -21,9 +19,5 @@ export default defineConfig({
       },
     },
   },
-  plugins: [
-    tailwindcss() as any, // eslint-disable-line @typescript-eslint/no-explicit-any
-    reactRouter(),
-    tsconfigPaths(),
-  ],
+  plugins: [tailwindcss(), react()],
 });
